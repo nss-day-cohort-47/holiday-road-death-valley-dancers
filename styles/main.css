@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+}
+
+header {
+    background-color: #168AAD;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3em;
+}
+
+header img {
+    max-height: 5em;
+}
+
+.dropdowns {
+    display: flex;
+    justify-content: space-around;
+    max-height: 5em;
+    align-items: center;
+    width: 30em;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2em;
+    
+}
+
+h2 {
+    text-align: center;
+}
+
+.park {
+    align-items: center;
+}
+
+.itineraryPreview {
+    background-color: #E6E6E6;
+    border: solid black 1px;
+    padding: 2em;
+    width: 60em;
+    display: flex;
+    flex-direction: column;
+}
+
+.park img {
+    height: 250px;
+    width: 500px;
+    object-fit: cover;
+    margin-bottom: 1em;
+}
+
+.bottomContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.eatery , .bizarre {
+    width: 45%;
+}
+
+.eatery h3 , .bizarre h3 {
+    text-align: center;
+}
+
+.eatery button, .bizarre button {
+    align-self: center;  
+}
+
+.park , .weather , .eatery , .bizarre {
+    background-color: white;
+    border-radius: 20px;
+    border: black solid 1px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+
+}
+
+button {
+    background-color: #76C893;
+    width: 100px;
+    border-radius: 20px;
+}
+
+aside {
+    background-color: #76C893;
+    width: 10em;
+    border: black solid 1px;
+}
+
+#submit {
+    background-color: #168AAD;
+    color: white;
+    align-self: center;
+    height: 45px;
+    width: 200px;
+}
+
+footer {
+    background-color: #168AAD;
+    text-align: center;
+    font-size: 2em;
+}
