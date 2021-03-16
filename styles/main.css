@@ -52,25 +52,29 @@ h2 {
     margin-bottom: 1em;
 }
 
+select {
+    width: 145px;
+}
+
 .bottomContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-.eatery , .bizarre {
+.eatery , .attraction {
     width: 45%;
 }
 
-.eatery h3 , .bizarre h3 {
+.eatery h3 , .attraction h3 {
     text-align: center;
 }
 
-.eatery button, .bizarre button {
+.eatery button, .attraction button {
     align-self: center;  
 }
 
-.park , .weather , .eatery , .bizarre {
+.park , .weather , .eatery , .attraction {
     background-color: white;
     border-radius: 20px;
     border: black solid 1px;

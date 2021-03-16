@@ -2,10 +2,10 @@ let allEateries = []
 
 export const getEateries = () => {
 	return fetch("http://holidayroad.nss.team/eateries")
-	.then(response => response.json)
-    .then(parsedResonse => {
+	.then(response => response.json())
+    .then(parsedResponse => {
         allEateries = parsedResponse;
-        return parsedResonse;
+        return parsedResponse;
     })
 }
 
