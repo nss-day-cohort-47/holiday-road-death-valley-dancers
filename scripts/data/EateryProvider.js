@@ -9,6 +9,6 @@ export const getEateries = () => {
     })
 }
 
-export const useAllEteries = () => {
+export const useAllEateries = () => {
     return [...allEateries]
 }
