@@ -25,5 +25,3 @@ export const getWeather = () => {
 export const useweatherForecast = () => {
     return [...weatherForecast]
 }
-
-console.log(weatherForecast);
