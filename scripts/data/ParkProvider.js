@@ -7,12 +7,6 @@ export const getParks = () => {
 
     .then(response => response.json())
         .then(parsedResponse => {
-            allParks = parsedResponse;
-            return parsedResponse;
-        })
-
-    .then(response => response.json())
-        .then(parsedResponse => {
             allParks = parsedResponse.data;
             return parsedResponse.data;
         })
