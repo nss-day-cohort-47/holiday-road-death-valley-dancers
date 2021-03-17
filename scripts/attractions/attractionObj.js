@@ -2,7 +2,7 @@
 
 export const attractionObj = (obj) => {
     return `
-    <h2 class="attractionName>${obj.name}</h2>
+    <h3 class="attractionName>${obj.name}</h3>
     <ul class="attractionDetails">
     <li>City:${obj.city}</li>
     <li>Description:${obj.description}</li>
