@@ -1,4 +1,4 @@
-import {attractionObj} from "./attractionObj.js";
+import { attractionObj } from "./attractionObj.js";
 
 //Iterating over data in HTML format and storing in a variable
 export const attractionList = (list) => {
