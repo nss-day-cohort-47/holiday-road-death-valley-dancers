@@ -6,9 +6,7 @@ export const getWeather = () => {
 
     return fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Hodgenville,KY,840&units=imperial&appid=${settings.weatherKey}`)
         .then(response => response.json())
-        .then(parsedResponse => {
-            console.log(parsedResponse.list)
-
+        .then(parsedResponse => {            
             weatherForecast = parsedResponse.list;
             let filteredWeather = [];
             for (let i = 0; i < weatherForecast.length; i++) {
@@ -16,7 +14,6 @@ export const getWeather = () => {
                     filteredWeather.push(weatherForecast[i])
                 }
             }
-            console.log(filteredWeather);
             weatherForecast = filteredWeather;
             return filteredWeather;
         })
