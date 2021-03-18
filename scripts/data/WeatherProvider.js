@@ -1,9 +1,9 @@
 import { settings } from "../Settings.js"
-
+// weatherForecast array
 let weatherForecast = [];
-
+// getWeather function; will need to insert a parameter at some point
 export const getWeather = () => {
-
+    // fetch call is where the information you store on the DOM comes from
     return fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Hodgenville,KY,840&units=imperial&appid=${settings.weatherKey}`)
         .then(response => response.json())
         .then(parsedResponse => {
