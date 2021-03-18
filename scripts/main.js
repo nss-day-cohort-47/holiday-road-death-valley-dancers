@@ -14,9 +14,9 @@ import { parkObj } from './parks/parkObj.js';
 
 
 const showWeatherList = () => {
-    const weatherElement = document.querySelector(".weather");
-    getWeather().then((response) => {
-        weatherElement.innerHTML = showWeather(response);
+    const weatherElement = document.querySelector(".weather");  
+    getWeather().then((response) => {        
+        weatherElement.innerHTML = showWeather(response);  
     })
 }
 
@@ -24,9 +24,9 @@ showWeatherList();
 
 
 const showEateryList = () => {
-    const eateryElement = document.querySelector(".eatery");
-    getEateries().then((allEateries) => {
-        eateryElement.innerHTML = eateryList(allEateries);
+    const eateryElement = document.querySelector(".eatery");  
+    getEateries().then((allEateries) => {                        
+        eateryElement.innerHTML = eateryList(allEateries);      
     })
 }
 
@@ -41,9 +41,11 @@ const showAttractionList = () => {
 
 showAttractionList();
 
+
 listParksInDropDown();
 listAttractionsInDropDown();
 listEateriesInDropDown();
+
 
 
 //////////////////////ADD EVENT LISTENERS HERE\\\\\\\\\\\\\\\\\\\\
@@ -51,11 +53,12 @@ listEateriesInDropDown();
 
 const mainElement = document.querySelector('body')
 
-//Get user park selection
+
 mainElement.addEventListener("change", event => {
     if (event.target.id === "parkDropDown") {
         const selectedParkIndex = event.target.options.selectedIndex;
 
+        console.log("selectedIndex", event.target.options[selectedParkIndex])
         renderSelectedPark(event.target.options[selectedParkIndex].value)
     }
 })
@@ -94,3 +97,18 @@ mainElement.addEventListener("click", event => {
         toggleEateryView();
     }
 })
+const attractionButton = () =>{
+    const location = document.querySelector(".attractionDetails");
+    if (location.style.display ==="block") {
+        location.style.display = "none";
+    } else {
+        location.style.display = "block";
+    }
+}
+
+mainElement.addEventListener('click', event => {
+  if (event.target.id === 'attractionButton') {
+      attractionButton()
+  }
+}
+)
