@@ -15,9 +15,9 @@ import { filterAttractionsByState } from './dropdowns/filterAttractions.js';
 import { filterEateriesByState } from './dropdowns/filterEateries.js';
 
 const showWeatherList = () => {
-    const weatherElement = document.querySelector(".weather");
-    getWeather().then((response) => {
-        weatherElement.innerHTML = showWeather(response);
+    const weatherElement = document.querySelector(".weather");  
+    getWeather().then((response) => {        
+        weatherElement.innerHTML = showWeather(response);  
     })
 }
 
@@ -25,9 +25,9 @@ showWeatherList();
 
 
 const showEateryList = () => {
-    const eateryElement = document.querySelector(".eatery");
-    getEateries().then((allEateries) => {
-        eateryElement.innerHTML = eateryList(allEateries);
+    const eateryElement = document.querySelector(".eatery");  
+    getEateries().then((allEateries) => {                        
+        eateryElement.innerHTML = eateryList(allEateries);      
     })
 }
 
@@ -42,7 +42,9 @@ const showAttractionList = () => {
 
 showAttractionList();
 
+
 listParksInDropDown();
+
 
 //////////////////////ADD EVENT LISTENERS HERE\\\\\\\\\\\\\\\\\\\\
 
@@ -124,3 +126,33 @@ const showFilteredEateries = (parkCode) => {
         listEateriesInDropDown(filteredArr)
     })
 }
+function toggleEateryView() {
+    const eateryDetailsLocation = document.querySelector(".eateryDetails");
+    if (eateryDetailsLocation.style.display === "block") {
+      eateryDetailsLocation.style.display = "none";
+    } else {
+      eateryDetailsLocation.style.display = "block";
+    }
+  }
+
+mainElement.addEventListener("click", event => {
+    if (event.target.id === "eateryButton") {
+        console.log("your button is working")
+        toggleEateryView();
+    }
+})
+const attractionButton = () =>{
+    const location = document.querySelector(".attractionDetails");
+    if (location.style.display ==="block") {
+        location.style.display = "none";
+    } else {
+        location.style.display = "block";
+    }
+}
+
+mainElement.addEventListener('click', event => {
+  if (event.target.id === 'attractionButton') {
+      attractionButton()
+  }
+}
+)
