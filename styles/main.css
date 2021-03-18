@@ -113,6 +113,10 @@ footer {
     font-size: 2em;
 }
 
+.eateryDetails {
+    display: none;
+}
+
 .attractionDetails {
     display:none;
 }

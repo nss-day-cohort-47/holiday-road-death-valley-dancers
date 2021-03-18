@@ -82,6 +82,21 @@ const renderSelectedPark = (value) => {
         })
 }
 
+function toggleEateryView() {
+    const eateryDetailsLocation = document.querySelector(".eateryDetails");
+    if (eateryDetailsLocation.style.display === "block") {
+      eateryDetailsLocation.style.display = "none";
+    } else {
+      eateryDetailsLocation.style.display = "block";
+    }
+  }
+
+mainElement.addEventListener("click", event => {
+    if (event.target.id === "eateryButton") {
+        console.log("your button is working")
+        toggleEateryView();
+    }
+})
 const attractionButton = () =>{
     const location = document.querySelector(".attractionDetails");
     if (location.style.display ==="block") {
