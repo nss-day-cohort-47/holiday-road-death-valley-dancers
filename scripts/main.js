@@ -78,3 +78,19 @@ const renderSelectedPark = (value) => {
             console.log(arrayWithPark[0].addresses[0].city)
         })
 }
+
+function toggleEateryView() {
+    const eateryDetailsLocation = document.querySelector(".eateryDetails");
+    if (eateryDetailsLocation.style.display === "block") {
+      eateryDetailsLocation.style.display = "none";
+    } else {
+      eateryDetailsLocation.style.display = "block";
+    }
+  }
+
+mainElement.addEventListener("click", event => {
+    if (event.target.id === "eateryButton") {
+        console.log("your button is working")
+        toggleEateryView();
+    }
+})
