@@ -1,4 +1,4 @@
-export const Weather = (weatherObj) => {
+export const Weather = (weatherObj) => {        //the weather object as HTML. Will accept an item from a loop += into a string
     return `
     <div class="weather">
         <h1>Weather - 5 Day Forecast</h1>
