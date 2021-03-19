@@ -30,14 +30,14 @@ const showWeatherList = (obj) => {
 
 
 const showEateryList = () => {
-   
+
     getEateries();
 }
 
 showEateryList();
 
 const showAttractionList = () => {
-    getAttraction() 
+    getAttraction()
 }
 
 showAttractionList();
@@ -64,6 +64,7 @@ mainElement.addEventListener("change", event => {
 
         showFilteredAttractions(selectedParkValue);
         showFilteredEateries(selectedParkValue);
+        
     }
 })
 
@@ -105,6 +106,7 @@ const renderSelectedAttr = (id) => {
             showSelectedAttraction(eachAttr)
         }
     }
+    buttonManage();
 }
 
 const renderSelectedEatery = (id) => {
@@ -114,6 +116,7 @@ const renderSelectedEatery = (id) => {
             showSelectedEatery(eachEat)
         }
     }
+    buttonManage();
 }
 
 const renderSelectedPark = (value) => {
@@ -130,7 +133,7 @@ const renderSelectedPark = (value) => {
         .then(arrayWithPark => {
             const parkPreviewElement = document.querySelector('.park');
             parkPreviewElement.innerHTML = parkObj(arrayWithPark[0])
-                //console.log(arrayWithPark[0].addresses[0].city)
+            //console.log(arrayWithPark[0].addresses[0].city)
         })
 }
 
@@ -217,15 +220,27 @@ mainElement.addEventListener('click', event => {
 4. That Object is converted to json then sent and stored in the json array via a function. 
 5. Json data is propogating and stored within the aside.*/
 //Note: Save button must be disabled untill the Park, attraction, and eatery have been selected.
+
+//disables and enables the save button
+const buttonManage = () => {
+    const parkName = document.querySelector(".parkTitle")
+    const eateryName = document.querySelector(".eateryTitle")
+    const attractionName = document.querySelector(".attractionTitle")
+    const button = document.querySelector("#submit")    
+     if (parkName === null || eateryName === null || attractionName === null) {
+        button.disabled = true
+    } else {
+        button.disabled = false;
+    }
+}
+
 //click event for save button
 mainElement.addEventListener('click', event => {
-    event.preventDefault();
-
-    if (event.target.id === "submit") {
+     if (event.target.id === "submit") {
+        event.preventDefault();
         const parkName = document.querySelector(".parkTitle").innerText
         const eateryName = document.querySelector(".eateryTitle").innerText
         const attractionName = document.querySelector(".attractionTitle").innerText
-
         const itineraryObj = {
             park: parkName,
             eatery: eateryName,
@@ -251,9 +266,12 @@ const saveItineraryObj = (obj) => {
 const postSavedItinerary = () => {
     const asideElement = document.querySelector(".savedItineraries");
     getSavedItinerary().then((savedItineraries) => {
-        asideElement.innerHTML += asideList(savedItineraries);
+        asideElement.innerHTML = asideList(savedItineraries);
     })
 }
 
-postSavedItinerary();
 
+
+
+postSavedItinerary();
+buttonManage();
