@@ -18,29 +18,16 @@ import { showSelectedEatery } from './eateries/listSelectedEatery.js';
 
 
 
-const showWeatherList = () => {
+const showWeatherList = (obj) => {
     const weatherElement = document.querySelector(".weather");
-    getWeather().then((response) => {
+    getWeather(obj).then((response) => {
         weatherElement.innerHTML = showWeather(response);
     })
 }
 
-showWeatherList();
 
-
-const showEateryList = () => { <<
-    << << < HEAD
-    const eateryElement = document.querySelector(".eatery");
-    getEateries().then((allEateries) => {
-            eateryElement.innerHTML = eateryList(allEateries);
-        }) ===
-        === =
-        //const eateryElement = document.querySelector(".eatery");  
-        getEateries() //.then((allEateries) => {                        
-        //eateryElement.innerHTML = eateryList(allEateries);      
-        //})
-        >>>
-        >>> > main
+const showEateryList = () => {
+    getEateries();
 }
 
 showEateryList();
@@ -69,6 +56,8 @@ mainElement.addEventListener("change", event => {
         const eatSelector = document.querySelector('.eatery');
         const AttrSelector = document.querySelector('.attraction');
         const selectedParkAsObj = getSelectedParkAsObj(selectedParkValue);
+
+        showWeatherList(selectedParkAsObj);
 
         eatSelector.innerHTML = '<h4>Select an eatery!</h4>';
         AttrSelector.innerHTML = '<h4>Select an attraction!</h4>';
