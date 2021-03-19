@@ -28,27 +28,28 @@ const showWeatherList = () => {
 showWeatherList();
 
 
-const showEateryList = () => {
-<<<<<<< HEAD
+const showEateryList = () => { <<
+    << << < HEAD
     const eateryElement = document.querySelector(".eatery");
     getEateries().then((allEateries) => {
-        eateryElement.innerHTML = eateryList(allEateries);
-    })
-=======
-    //const eateryElement = document.querySelector(".eatery");  
-    getEateries()//.then((allEateries) => {                        
+            eateryElement.innerHTML = eateryList(allEateries);
+        }) ===
+        === =
+        //const eateryElement = document.querySelector(".eatery");  
+        getEateries() //.then((allEateries) => {                        
         //eateryElement.innerHTML = eateryList(allEateries);      
-    //})
->>>>>>> main
+        //})
+        >>>
+        >>> > main
 }
 
 showEateryList();
 
 const showAttractionList = () => {
     //const attractionElement = document.querySelector(".attraction");
-    getAttraction()//.then((allAttractions) => {
+    getAttraction() //.then((allAttractions) => {
         //attractionElement.innerHTML = attractionList(allAttractions);
-    //})
+        //})
 }
 
 showAttractionList();
@@ -65,16 +66,12 @@ mainElement.addEventListener("change", event => {
     if (event.target.id === "parkDropDown") {
         const selectedParkIndex = event.target.options.selectedIndex;
         const selectedParkValue = event.target.options[selectedParkIndex].value;
-<<<<<<< HEAD
-
-=======
         const eatSelector = document.querySelector('.eatery');
         const AttrSelector = document.querySelector('.attraction');
         const selectedParkAsObj = getSelectedParkAsObj(selectedParkValue);
-        
+
         eatSelector.innerHTML = '<h4>Select an eatery!</h4>';
         AttrSelector.innerHTML = '<h4>Select an attraction!</h4>';
->>>>>>> main
         renderSelectedPark(selectedParkValue);
 
         showFilteredAttractions(selectedParkValue);
@@ -87,7 +84,7 @@ mainElement.addEventListener("change", event => {
         const selectedAttrIndex = event.target.options.selectedIndex;
         const selectedAttrValue = event.target.options[selectedAttrIndex].value;
         renderSelectedAttr(selectedAttrValue)
-        
+
     }
 })
 
