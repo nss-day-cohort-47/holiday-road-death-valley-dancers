@@ -15,9 +15,9 @@ import { filterAttractionsByState } from './dropdowns/filterAttractions.js';
 import { filterEateriesByState } from './dropdowns/filterEateries.js';
 
 const showWeatherList = () => {
-    const weatherElement = document.querySelector(".weather");  
-    getWeather().then((response) => {        
-        weatherElement.innerHTML = showWeather(response);  
+    const weatherElement = document.querySelector(".weather");
+    getWeather().then((response) => {
+        weatherElement.innerHTML = showWeather(response);
     })
 }
 
@@ -25,9 +25,9 @@ showWeatherList();
 
 
 const showEateryList = () => {
-    const eateryElement = document.querySelector(".eatery");  
-    getEateries().then((allEateries) => {                        
-        eateryElement.innerHTML = eateryList(allEateries);      
+    const eateryElement = document.querySelector(".eatery");
+    getEateries().then((allEateries) => {
+        eateryElement.innerHTML = eateryList(allEateries);
     })
 }
 
@@ -54,9 +54,9 @@ mainElement.addEventListener("change", event => {
     if (event.target.id === "parkDropDown") {
         const selectedParkIndex = event.target.options.selectedIndex;
         const selectedParkValue = event.target.options[selectedParkIndex].value;
-        
+
         renderSelectedPark(selectedParkValue);
-        
+
         showFilteredAttractions(selectedParkValue);
         showFilteredEateries(selectedParkValue);
     }
@@ -78,62 +78,63 @@ const renderSelectedPark = (value) => {
         .then(arrayWithPark => {
             const parkPreviewElement = document.querySelector('.park');
             parkPreviewElement.innerHTML = parkObj(arrayWithPark[0])
-            //console.log(arrayWithPark[0].addresses[0].city)
+                //console.log(arrayWithPark[0].addresses[0].city)
         })
 }
 
 const showFilteredAttractions = (parkCode) => {
     getParks()
-    .then(arrOfParks => {
-        let parkObj = {};
-        for (const eachPark of arrOfParks) {
-            if (eachPark.parkCode === parkCode) {
-                parkObj = eachPark
-                break; //<<<<<<<<<<<<<<<<<<<<<<<<<This function takes in the park code of the selected park, then it gets that park as an object...
-            } //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<then it gets the state code of that object.
-        }
-        return parkObj
-    })
-    .then(obj => {
-        const stateCode = obj.addresses[0].stateCode;
-        return stateCode
-    })
-    .then(state => {
-        const filteredArr = filterAttractionsByState(state)
-        listAttractionsInDropDown(filteredArr)
-    })
+        .then(arrOfParks => {
+            let parkObj = {};
+            for (const eachPark of arrOfParks) {
+                if (eachPark.parkCode === parkCode) {
+                    parkObj = eachPark
+                    break; //<<<<<<<<<<<<<<<<<<<<<<<<<This function takes in the park code of the selected park, then it gets that park as an object...
+                } //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<then it gets the state code of that object.
+            }
+            return parkObj
+        })
+        .then(obj => {
+            const stateCode = obj.addresses[0].stateCode;
+            return stateCode
+        })
+        .then(state => {
+            const filteredArr = filterAttractionsByState(state)
+            listAttractionsInDropDown(filteredArr)
+        })
 }
 
 
 const showFilteredEateries = (parkCode) => {
     getParks()
-    .then(arrOfParks => {
-        let parkObj = {};
-        for (const eachPark of arrOfParks) {
-            if (eachPark.parkCode === parkCode) {
-                parkObj = eachPark
-                break; //<<<<<<<<<<<<<<<<<<<<<<<<<This function takes in the park code of the selected park, then it gets that park as an object...
-            } //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<then it gets the state code of that object.
-        }
-        return parkObj
-    })
-    .then(obj => {
-        const stateCode = obj.addresses[0].stateCode;
-        return stateCode
-    })
-    .then(state => {
-        const filteredArr = filterEateriesByState(state)
-        listEateriesInDropDown(filteredArr)
-    })
+        .then(arrOfParks => {
+            let parkObj = {};
+            for (const eachPark of arrOfParks) {
+                if (eachPark.parkCode === parkCode) {
+                    parkObj = eachPark
+                    break; //<<<<<<<<<<<<<<<<<<<<<<<<<This function takes in the park code of the selected park, then it gets that park as an object...
+                } //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<then it gets the state code of that object.
+            }
+            return parkObj
+        })
+        .then(obj => {
+            const stateCode = obj.addresses[0].stateCode;
+            return stateCode
+        })
+        .then(state => {
+            const filteredArr = filterEateriesByState(state)
+            listEateriesInDropDown(filteredArr)
+        })
 }
+
 function toggleEateryView() {
     const eateryDetailsLocation = document.querySelector(".eateryDetails");
     if (eateryDetailsLocation.style.display === "block") {
-      eateryDetailsLocation.style.display = "none";
+        eateryDetailsLocation.style.display = "none";
     } else {
-      eateryDetailsLocation.style.display = "block";
+        eateryDetailsLocation.style.display = "block";
     }
-  }
+}
 
 mainElement.addEventListener("click", event => {
     if (event.target.id === "eateryButton") {
@@ -141,9 +142,9 @@ mainElement.addEventListener("click", event => {
         toggleEateryView();
     }
 })
-const attractionButton = () =>{
+const attractionButton = () => {
     const location = document.querySelector(".attractionDetails");
-    if (location.style.display ==="block") {
+    if (location.style.display === "block") {
         location.style.display = "none";
     } else {
         location.style.display = "block";
@@ -151,8 +152,7 @@ const attractionButton = () =>{
 }
 
 mainElement.addEventListener('click', event => {
-  if (event.target.id === 'attractionButton') {
-      attractionButton()
-  }
-}
-)
+    if (event.target.id === 'attractionButton') {
+        attractionButton()
+    }
+})

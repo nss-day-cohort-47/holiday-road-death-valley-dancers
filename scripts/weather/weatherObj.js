@@ -1,7 +1,7 @@
-export const Weather = (weatherObj) => {        //the weather object as HTML. Will accept an item from a loop += into a string
+export const Weather = (weatherObj) => { //the weather object as HTML. Will accept an item from a loop += into a string
     return `
     <div class="weather">
-        <h1>Weather - 5 Day Forecast</h1>
+        <h1>Weather - Day 1 Forecast</h1>
         <ul>
         <li class="temp">Temp: ${weatherObj.main.temp}</li>
         <li class="high">High: ${weatherObj.main.temp_max}</li>
