@@ -1,5 +1,5 @@
 export const eatery = (eateryObj) => {
-    return `<h3>${eateryObj.businessName}</h3>
+    return `<h3 class= "eateryTitle">${eateryObj.businessName}</h3>
         <ul class="eateryDetails">
             <li>${eateryObj.description}</li>
             <li>${eateryObj.city}, ${eateryObj.state}</li>

@@ -13,6 +13,9 @@ import { listEateriesInDropDown } from './dropdowns/listEateriesInDropDown.js';
 import { parkObj, parkDetailObj } from './parks/parkObj.js';
 import { filterAttractionsByState } from './dropdowns/filterAttractions.js';
 import { filterEateriesByState } from './dropdowns/filterEateries.js';
+import { asideObj } from './aside/asideObj.js';
+import { asideList } from './aside/asideList.js';
+import { getSavedItinerary } from './aside/asideProvider.js'
 import { showSelectedAttraction } from './attractions/listSelectedAttraction.js';
 import { showSelectedEatery } from './eateries/listSelectedEatery.js';
 
@@ -27,21 +30,17 @@ const showWeatherList = (obj) => {
 
 
 const showEateryList = () => {
+   
     getEateries();
 }
 
 showEateryList();
 
 const showAttractionList = () => {
-    //const attractionElement = document.querySelector(".attraction");
-    getAttraction() //.then((allAttractions) => {
-    //attractionElement.innerHTML = attractionList(allAttractions);
-    //})
+    getAttraction() 
 }
 
 showAttractionList();
-
-
 listParksInDropDown();
 
 
@@ -234,3 +233,52 @@ mainElement.addEventListener("click", event => {
         togglePhotoDetails(selectedPark)
     }
 })
+
+//event listener for save button. 
+//*TODO: 
+/*1. Listen to the button on the Dom. 
+2. Create a click event on that location. 
+3. Create if statement that looks to Park Name, Eatery Name, and Attraction Name and stores those key values in an object. 
+4. That Object is converted to json then sent and stored in the json array via a function. 
+5. Json data is propogating and stored within the aside.*/
+//Note: Save button must be disabled untill the Park, attraction, and eatery have been selected.
+//click event for save button
+mainElement.addEventListener('click', event => {
+    event.preventDefault();
+
+    if (event.target.id === "submit") {
+        const parkName = document.querySelector(".parkTitle").innerText
+        const eateryName = document.querySelector(".eateryTitle").innerText
+        const attractionName = document.querySelector(".attractionTitle").innerText
+
+        const itineraryObj = {
+            park: parkName,
+            eatery: eateryName,
+            attraction: attractionName
+        }
+        saveItineraryObj(itineraryObj);
+        postSavedItinerary();
+    }
+})
+//saves Itinerary to local api
+const saveItineraryObj = (obj) => {
+    const jsonObj = JSON.stringify(obj);
+    fetch(' http://localhost:8088/itineraries', {
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        method: 'POST',
+        body: jsonObj
+    })
+}
+//pulls data from local api and displays to aside element
+const postSavedItinerary = () => {
+    const asideElement = document.querySelector(".savedItineraries");
+    getSavedItinerary().then((savedItineraries) => {
+        asideElement.innerHTML += asideList(savedItineraries);
+    })
+}
+
+postSavedItinerary();
+

@@ -95,7 +95,7 @@ button {
 
 aside {
     background-color: #76C893;
-    width: 10em;
+    width: 15em;
     border: black solid 1px;
 }
 
@@ -119,4 +119,12 @@ footer {
 
 .attractionDetails {
     display:none;
+}
+
+.asideBorder {
+    border: solid 3px white;
+}
+
+li {
+    text-align: left;
 }
