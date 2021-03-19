@@ -1,6 +1,6 @@
 export const parkObj = (obj) => {    
     return `
-        <h1>${obj.fullName}</h1>
+        <h1 class= "parkTitle">${obj.fullName}</h1>
         <img src="${obj.images[0].url}" alt="park">
         <button class="parkButton">Details</button>
     `
