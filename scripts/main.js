@@ -10,7 +10,7 @@ import { attractionList } from "./attractions/attractionList.js";
 import { listParksInDropDown } from './dropdowns/listParkDropDown.js';
 import { listAttractionsInDropDown } from './dropdowns/listAttractionsInDropDown.js';
 import { listEateriesInDropDown } from './dropdowns/listEateriesInDropDown.js';
-import { parkObj } from './parks/parkObj.js';
+import { parkObj, parkDetailObj } from './parks/parkObj.js';
 import { filterAttractionsByState } from './dropdowns/filterAttractions.js';
 import { filterEateriesByState } from './dropdowns/filterEateries.js';
 import { showSelectedAttraction } from './attractions/listSelectedAttraction.js';
@@ -35,8 +35,8 @@ showEateryList();
 const showAttractionList = () => {
     //const attractionElement = document.querySelector(".attraction");
     getAttraction() //.then((allAttractions) => {
-        //attractionElement.innerHTML = attractionList(allAttractions);
-        //})
+    //attractionElement.innerHTML = attractionList(allAttractions);
+    //})
 }
 
 showAttractionList();
@@ -56,6 +56,8 @@ mainElement.addEventListener("change", event => {
         const eatSelector = document.querySelector('.eatery');
         const AttrSelector = document.querySelector('.attraction');
         const selectedParkAsObj = getSelectedParkAsObj(selectedParkValue);
+
+
 
         showWeatherList(selectedParkAsObj);
 
@@ -131,7 +133,7 @@ const renderSelectedPark = (value) => {
         .then(arrayWithPark => {
             const parkPreviewElement = document.querySelector('.park');
             parkPreviewElement.innerHTML = parkObj(arrayWithPark[0])
-                //console.log(arrayWithPark[0].addresses[0].city)
+            //console.log(arrayWithPark[0].addresses[0].city)
         })
 }
 
@@ -206,5 +208,29 @@ const attractionButton = () => {
 mainElement.addEventListener('click', event => {
     if (event.target.id === 'attractionButton') {
         attractionButton()
+    }
+})
+
+
+function togglePhotoDetails(obj) {
+    const parkPreviewElement = document.querySelector('.park');
+    if (parkPreviewElement.innerHTML.includes("<img")) {
+        parkPreviewElement.innerHTML = parkDetailObj(obj)
+    } else if (parkPreviewElement.innerHTML.includes("<p>")) {
+        parkPreviewElement.innerHTML = parkObj(obj)
+    }
+}
+
+mainElement.addEventListener("click", event => {
+    if (event.target.id === "parkButton") {
+        const parkCode = event.target.className
+        const allParks = useAllParks()
+        let selectedPark = {}
+        for (const eachPark of allParks) {
+            if (eachPark.parkCode === parkCode){
+                selectedPark = eachPark
+            }
+        }
+        togglePhotoDetails(selectedPark)
     }
 })
