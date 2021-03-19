@@ -8,6 +8,6 @@ export const asideObj = (obj) => {
     <br>
     <li>Attraction: ${obj.attraction}</li>
     </ul>
-    <div>
+    </div>
 `
 }

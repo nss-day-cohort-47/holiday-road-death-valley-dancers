@@ -30,25 +30,17 @@ const showWeatherList = (obj) => {
 
 
 const showEateryList = () => {
-    const eateryElement = document.querySelector(".eatery");
-    getEateries().then((allEateries) => {
-        eateryElement.innerHTML = eateryList(allEateries);
-    })
+   
     getEateries();
 }
 
 showEateryList();
 
 const showAttractionList = () => {
-    //const attractionElement = document.querySelector(".attraction");
-    getAttraction() //.then((allAttractions) => {
-        //attractionElement.innerHTML = attractionList(allAttractions);
-        //})
+    getAttraction() 
 }
 
 showAttractionList();
-
-
 listParksInDropDown();
 
 
