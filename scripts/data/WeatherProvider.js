@@ -2,9 +2,9 @@ import { settings } from "../Settings.js"
 
 let weatherForecast = [];
 
-export const getWeather = () => {
+export const getWeather = (obj) => {
 
-    return fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Hodgenville,KY,840&units=imperial&appid=${settings.weatherKey}`)
+    return fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${obj.addresses[0].city},${obj.addresses[0].stateCode},840&units=imperial&appid=${settings.weatherKey}`)
         .then(response => response.json())
         .then(parsedResponse => {            
             weatherForecast = parsedResponse.list;
